@@ -7,12 +7,19 @@
     <div id="container"></div>
     <p class="highcharts-description">
 	Pr  :
-        [ ] Membuat grafik fungsi
+</br>
+	 [ ] experimen Membuat grafik2 fungsi
+</br>
 	[ ] Memanipulasi grafik
+</br>
 	[ ] Modulo
-	[ ] Trigo
+</br>
+	[ ] Github repo learn
+</br>
 	[ ] global & local var
+</br>
 	[ ] Array
+</br>
 	[ ] Library highchart check
     </p>
 </figure>
@@ -32,7 +39,7 @@
 	    margin: 10px auto;
 	    text-align: center;
 	    width: 100%;
-	    max-width: 500px;
+	    max-width: 800px;
 	}
 
 	.highcharts-data-table caption {
@@ -43,7 +50,7 @@
 
 	.highcharts-data-table th {
 	    font-weight: 600;
-	    padding: 0.5em;
+	    padding: 0.5em;tab
 	}
 
 	.highcharts-data-table td,
@@ -64,7 +71,12 @@
 </style>
 
 <script type="text/javascript">
-	let rawdata = []
+
+let rawData = [];
+for (let i = 0; i < 20 * Math.PI; i += 0.1) {
+    rawData.push([i, Math.sin(i)]);
+}
+	
 	// for(let i = 10; i > 0; i--){
 	// 	rawdata[Math.abs(i-10)] = i * 5;
 	// }
@@ -75,33 +87,30 @@
 	// 	rawdata[i] = (i-10) * 5
 	// }
 
-	for(let i = 0; i <= 20; i++){
-		rawdata[i] = Math.sin(i)
-	}
+	//for(let i = 0; i <= 10; i++){
+	//	rawdata[i] = Math.sin(i)
+	//}
+
 	// rawdata[0] = 10;
 	// rawdata[1] = 15;
 	// rawdata[2] = 20;
-
+	//Ini Array*
 	Highcharts.chart('container', {
-
+		// Cara jika data yang dipakai sudah di define valuenya di awal
     title: {
-        text: 'Logarithmic axis demo'
+        text: 'Mountain'
     },
 
     xAxis: {
-        tickInterval: 0,
-        type: '',
-        accessibility: {
-            rangeDescription: 'Range: 1 to 10'
-        }
+        title: {
+			text: 'panjang gunung'
+		}
     },
 
     yAxis: {
-        type: '',
-        minorTickInterval: 0,
-        accessibility: {
-            rangeDescription: 'Range: 0.1 to 1000'
-        }
+       title: {
+		text: 'tinggi gunung'
+	   }
     },
 
     tooltip: {
@@ -109,9 +118,22 @@
         pointFormat: 'x = {point.x}, y = {point.y}'
     },
 
-    series: [{
-        data: rawdata,
-        pointStart: 0
-    }]
+	series: [{
+        name: 'Sine Curve',
+        data: rawData
+	}]
+	
+	// Ini langsung kita define di seriesnya (yg titik biru)
+	//series: [{
+    //    name: 'Sine Curve',
+    //    data: (function () {
+    //        var data = [],
+    //            i;
+   //         for (i = 0; i < 20 * Math.PI; i += 0.1) {
+    //            data.push([i, Math.sin(i)]);
+    //        }
+    //        return data;
+   //     }())
+	//}]
 });
 </script>
